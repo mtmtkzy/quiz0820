@@ -1,105 +1,234 @@
-import random
-from IPython.display import display, Image, Audio
-
-# クイズデータ（画像URL・問題文・選択肢・答え）
-quiz_data = [
-    {
-        "image": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
-        "question": "この動物は何でしょう？",
-        "options": ["イヌ", "ネコ", "キツネ", "タヌキ"],
-        "answer": "イヌ"
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
     },
-    {
-        "image": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg",
-        "question": "この動物は何でしょう？",
-        "options": ["ウサギ", "ネコ", "リス", "フェレット"],
-        "answer": "ネコ"
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
     },
-    {
-        "image": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Rabbit_in_montana.jpg",
-        "question": "この動物は何でしょう？",
-        "options": ["リス", "モルモット", "ウサギ", "ネズミ"],
-        "answer": "ウサギ"
-    },
-    {
-        "image": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Red_fox_in_field.jpg",
-        "question": "この動物は何でしょう？",
-        "options": ["キツネ", "オオカミ", "タヌキ", "ネコ"],
-        "answer": "キツネ"
-    },
-    {
-        "image": "https://upload.wikimedia.org/wikipedia/commons/2/26/Japanese_Raccoon_Dog.jpg",
-        "question": "この動物は何でしょう？",
-        "options": ["タヌキ", "レッサーパンダ", "アライグマ", "キツネ"],
-        "answer": "タヌキ"
-    },
-    {
-        "image": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Gray_wolf.jpg",
-        "question": "この動物は何でしょう？",
-        "options": ["オオカミ", "イヌ", "シベリアンハスキー", "キツネ"],
-        "answer": "オオカミ"
-    },
-    {
-        "image": "https://upload.wikimedia.org/wikipedia/commons/8/82/Squirrel_in_park.jpg",
-        "question": "この動物は何でしょう？",
-        "options": ["リス", "ハムスター", "モルモット", "フェレット"],
-        "answer": "リス"
-    },
-    {
-        "image": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Guinea_Pig.jpg",
-        "question": "この動物は何でしょう？",
-        "options": ["ウサギ", "モルモット", "リス", "チンチラ"],
-        "answer": "モルモット"
-    },
-    {
-        "image": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Ferret_2008.png",
-        "question": "この動物は何でしょう？",
-        "options": ["フェレット", "イタチ", "テン", "ネズミ"],
-        "answer": "フェレット"
-    },
-    {
-        "image": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Red_Panda_in_a_tree.jpg",
-        "question": "この動物は何でしょう？",
-        "options": ["レッサーパンダ", "アライグマ", "タヌキ", "コアラ"],
-        "answer": "レッサーパンダ"
+    "language_info": {
+      "name": "python"
     }
-]
-
-# 効果音（フリーの短いサウンドファイルURL例）
-correct_sound = "https://www.soundjay.com/buttons/sounds/button-09.mp3"
-wrong_sound   = "https://www.soundjay.com/buttons/sounds/button-10.mp3"
-
-# クイズ実行
-def run_quiz():
-    score = 0
-    random.shuffle(quiz_data)
-    
-    print("=== 動物クイズ（全10問） ===")
-    
-    for i, q in enumerate(quiz_data, 1):
-        print(f"\n【第{i}問】 {q['question']}")
-        display(Image(url=q['image'], width=250))
-        
-        for j, option in enumerate(q["options"], 1):
-            print(f"{j}. {option}")
-        
-        try:
-            choice = int(input("番号で答えてください: "))
-            if q["options"][choice-1] == q["answer"]:
-                print("✅ 正解！")
-                score += 1
-                display(Audio(url=correct_sound, autoplay=True))
-            else:
-                print(f"❌ 不正解… 正解は「{q['answer']}」でした")
-                display(Audio(url=wrong_sound, autoplay=True))
-        except:
-            print("⚠️ 無効な入力です。スキップします。")
-        
-        # スコアをリアルタイム表示
-        print(f"現在のスコア: {score}/{i}")
-    
-    print("\n=== 結果発表 ===")
-    print(f"あなたのスコア: {score}/10")
-
-# 実行
-run_quiz()
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/mtmtkzy/animalquiz/blob/main/Untitled4.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 410
+        },
+        "id": "G1cC3du9TIvs",
+        "outputId": "ef2f879e-1a5f-4763-b3c7-e189f02ebb1b"
+      },
+      "outputs": [
+        {
+          "metadata": {
+            "tags": null
+          },
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "=== 動物クイズ（全10問） ===\n",
+            "\n",
+            "【第1問】 この動物は何でしょう？\n"
+          ]
+        },
+        {
+          "data": {
+            "text/html": [
+              "<img src=\"https://upload.wikimedia.org/wikipedia/commons/2/26/Japanese_Raccoon_Dog.jpg\" width=\"250\"/>"
+            ],
+            "text/plain": [
+              "<IPython.core.display.Image object>"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        },
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "1. タヌキ\n",
+            "2. レッサーパンダ\n",
+            "3. アライグマ\n",
+            "4. キツネ\n",
+            "番号で答えてください: １\n",
+            "✅ 正解！\n"
+          ]
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "<IPython.lib.display.Audio object>"
+            ],
+            "text/html": [
+              "\n",
+              "                <audio  controls=\"controls\" autoplay=\"autoplay\">\n",
+              "                    <source src=\"https://www.soundjay.com/buttons/sounds/button-09.mp3\" type=\"audio/mpeg\" />\n",
+              "                    Your browser does not support the audio element.\n",
+              "                </audio>\n",
+              "              "
+            ]
+          },
+          "metadata": {}
+        },
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "現在のスコア: 1/1\n",
+            "\n",
+            "【第2問】 この動物は何でしょう？\n"
+          ]
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/html": [
+              "<img src=\"https://upload.wikimedia.org/wikipedia/commons/f/f0/Rabbit_in_montana.jpg\" width=\"250\"/>"
+            ],
+            "text/plain": [
+              "<IPython.core.display.Image object>"
+            ]
+          },
+          "metadata": {}
+        },
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "1. リス\n",
+            "2. モルモット\n",
+            "3. ウサギ\n",
+            "4. ネズミ\n"
+          ]
+        }
+      ],
+      "source": [
+        "import random\n",
+        "from IPython.display import display, Image, Audio\n",
+        "\n",
+        "# クイズデータ（画像URL・問題文・選択肢・答え）\n",
+        "quiz_data = [\n",
+        "    {\n",
+        "        \"image\": \"https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg\",\n",
+        "        \"question\": \"この動物は何でしょう？\",\n",
+        "        \"options\": [\"イヌ\", \"ネコ\", \"キツネ\", \"タヌキ\"],\n",
+        "        \"answer\": \"イヌ\"\n",
+        "    },\n",
+        "    {\n",
+        "        \"image\": \"https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg\",\n",
+        "        \"question\": \"この動物は何でしょう？\",\n",
+        "        \"options\": [\"ウサギ\", \"ネコ\", \"リス\", \"フェレット\"],\n",
+        "        \"answer\": \"ネコ\"\n",
+        "    },\n",
+        "    {\n",
+        "        \"image\": \"https://upload.wikimedia.org/wikipedia/commons/f/f0/Rabbit_in_montana.jpg\",\n",
+        "        \"question\": \"この動物は何でしょう？\",\n",
+        "        \"options\": [\"リス\", \"モルモット\", \"ウサギ\", \"ネズミ\"],\n",
+        "        \"answer\": \"ウサギ\"\n",
+        "    },\n",
+        "    {\n",
+        "        \"image\": \"https://upload.wikimedia.org/wikipedia/commons/7/7e/Red_fox_in_field.jpg\",\n",
+        "        \"question\": \"この動物は何でしょう？\",\n",
+        "        \"options\": [\"キツネ\", \"オオカミ\", \"タヌキ\", \"ネコ\"],\n",
+        "        \"answer\": \"キツネ\"\n",
+        "    },\n",
+        "    {\n",
+        "        \"image\": \"https://upload.wikimedia.org/wikipedia/commons/2/26/Japanese_Raccoon_Dog.jpg\",\n",
+        "        \"question\": \"この動物は何でしょう？\",\n",
+        "        \"options\": [\"タヌキ\", \"レッサーパンダ\", \"アライグマ\", \"キツネ\"],\n",
+        "        \"answer\": \"タヌキ\"\n",
+        "    },\n",
+        "    {\n",
+        "        \"image\": \"https://upload.wikimedia.org/wikipedia/commons/e/e8/Gray_wolf.jpg\",\n",
+        "        \"question\": \"この動物は何でしょう？\",\n",
+        "        \"options\": [\"オオカミ\", \"イヌ\", \"シベリアンハスキー\", \"キツネ\"],\n",
+        "        \"answer\": \"オオカミ\"\n",
+        "    },\n",
+        "    {\n",
+        "        \"image\": \"https://upload.wikimedia.org/wikipedia/commons/8/82/Squirrel_in_park.jpg\",\n",
+        "        \"question\": \"この動物は何でしょう？\",\n",
+        "        \"options\": [\"リス\", \"ハムスター\", \"モルモット\", \"フェレット\"],\n",
+        "        \"answer\": \"リス\"\n",
+        "    },\n",
+        "    {\n",
+        "        \"image\": \"https://upload.wikimedia.org/wikipedia/commons/0/0b/Guinea_Pig.jpg\",\n",
+        "        \"question\": \"この動物は何でしょう？\",\n",
+        "        \"options\": [\"ウサギ\", \"モルモット\", \"リス\", \"チンチラ\"],\n",
+        "        \"answer\": \"モルモット\"\n",
+        "    },\n",
+        "    {\n",
+        "        \"image\": \"https://upload.wikimedia.org/wikipedia/commons/d/dc/Ferret_2008.png\",\n",
+        "        \"question\": \"この動物は何でしょう？\",\n",
+        "        \"options\": [\"フェレット\", \"イタチ\", \"テン\", \"ネズミ\"],\n",
+        "        \"answer\": \"フェレット\"\n",
+        "    },\n",
+        "    {\n",
+        "        \"image\": \"https://upload.wikimedia.org/wikipedia/commons/f/f5/Red_Panda_in_a_tree.jpg\",\n",
+        "        \"question\": \"この動物は何でしょう？\",\n",
+        "        \"options\": [\"レッサーパンダ\", \"アライグマ\", \"タヌキ\", \"コアラ\"],\n",
+        "        \"answer\": \"レッサーパンダ\"\n",
+        "    }\n",
+        "]\n",
+        "\n",
+        "# 効果音（フリーの短いサウンドファイルURL例）\n",
+        "correct_sound = \"https://www.soundjay.com/buttons/sounds/button-09.mp3\"\n",
+        "wrong_sound   = \"https://www.soundjay.com/buttons/sounds/button-10.mp3\"\n",
+        "\n",
+        "# クイズ実行\n",
+        "def run_quiz():\n",
+        "    score = 0\n",
+        "    random.shuffle(quiz_data)\n",
+        "\n",
+        "    print(\"=== 動物クイズ（全10問） ===\")\n",
+        "\n",
+        "    for i, q in enumerate(quiz_data, 1):\n",
+        "        print(f\"\\n【第{i}問】 {q['question']}\")\n",
+        "        display(Image(url=q['image'], width=250))\n",
+        "\n",
+        "        for j, option in enumerate(q[\"options\"], 1):\n",
+        "            print(f\"{j}. {option}\")\n",
+        "\n",
+        "        try:\n",
+        "            choice = int(input(\"番号で答えてください: \"))\n",
+        "            if q[\"options\"][choice-1] == q[\"answer\"]:\n",
+        "                print(\"✅ 正解！\")\n",
+        "                score += 1\n",
+        "                display(Audio(url=correct_sound, autoplay=True))\n",
+        "            else:\n",
+        "                print(f\"❌ 不正解… 正解は「{q['answer']}」でした\")\n",
+        "                display(Audio(url=wrong_sound, autoplay=True))\n",
+        "        except:\n",
+        "            print(\"⚠️ 無効な入力です。スキップします。\")\n",
+        "\n",
+        "        # スコアをリアルタイム表示\n",
+        "        print(f\"現在のスコア: {score}/{i}\")\n",
+        "\n",
+        "    print(\"\\n=== 結果発表 ===\")\n",
+        "    print(f\"あなたのスコア: {score}/10\")\n",
+        "\n",
+        "# 実行\n",
+        "run_quiz()"
+      ]
+    }
+  ]
+}
